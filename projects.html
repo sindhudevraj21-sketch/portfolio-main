@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfolio - Projects</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-main: #f3e8dd;
+      --bg-page: #f7efe7;
+      --card-bg: #ffffff;
+      --text-main: #222222;
+      --text-muted: #777777;
+      --accent: #111111;
+      --nav-hover: #000000;
+      --border-soft: #e2d3c5;
+      --shadow-soft: 0 8px 20px rgba(0,0,0,0.06);
+      --radius-card: 12px;
+      --transition-fast: 0.25s ease;
+      --tag-bg: #f2f2f2;
+      --accent-orange: #d96b1f;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    /* Header (same as other pages) */
+    header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 12px 24px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      padding-bottom: 6px;
+      position: relative;
+      transition: color var(--transition-fast);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 0;
+      background-color: var(--accent);
+      transition: width var(--transition-fast);
+    }
+
+    nav a.active {
+      color: var(--nav-hover);
+    }
+
+    nav a.active::after {
+      width: 100%;
+    }
+
+    nav a:hover {
+      color: var(--nav-hover);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Page container */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      padding: 0 24px 40px;
+    }
+
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      margin: 12px 0 18px;
+    }
+
+    /* Project card */
+    .project-card {
+      background-color: var(--card-bg);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 24px;
+      border: 1px solid #f0e2d4;
+    }
+
+/* Project Card Background */
+.project-card {
+  background-color: #fffdfb;     /* light, elegant background */
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 26px;
+  border: 1px solid #f0e2d4;
+}
+
+/* Image Section */
+.project-image {
+  width: 100%;
+  background-color: #f1dac5;     /* subtle background behind image */
+  text-align: center;
+  padding: 16px 0;               /* spacing around image */
+}
+
+.project-image img {
+  width: auto;
+  max-width: 90%;                /* prevents image from stretching too wide */
+  max-height: 260px;             /* makes image smaller */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 12px;
+  object-fit: contain;           /* ensures no cropping */
+}
+
+
+    .project-content {
+      padding: 22px 26px 20px;
+    }
+
+    .project-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--accent-orange);
+      margin-bottom: 6px;
+    }
+
+    .project-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .project-meta a {
+      color: #1a73e8;
+      text-decoration: none;
+    }
+
+    .project-meta a:hover {
+      text-decoration: underline;
+    }
+
+    .project-description {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 750px;
+      margin-bottom: 14px;
+    }
+
+    .project-description ul {
+      margin-left: 18px;
+      margin-top: 4px;
+    }
+
+    .project-description li {
+      margin-bottom: 4px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .tag-pill {
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background-color: var(--tag-bg);
+      border: 1px solid #e0e0e0;
+    }
+
+    @media (max-width: 800px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        gap: 18px;
+      }
+
+      .page {
+        padding: 0 16px 32px;
+      }
+
+      .project-content {
+        padding: 18px 18px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Shared header -->
+  <header>
+    <div class="logo">Portfolio</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="biodata.html">Biodata</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="activities.html">Activities</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Projects list -->
+  <div class="page">
+    <h2 class="page-title">Projects</h2>
+
+    <!-- Project 1: AI-Powered Air Traffic Collision Avoidance Simulator -->
+    <article class="project-card">
+      <div class="project-image">
+  <img src="images/simatc.png" alt="Air Traffic Simulator">
+</div>
+
+
+      <div class="project-content">
+        <h3 class="project-title">AI-Powered Air Traffic Collision Avoidance Simulator</h3>
+        <div class="project-meta">
+          Aug 2024 – Nov 2024 ·
+          <a href="https://github.com/PadmajaNaik14/atc_ai" target="_blank">Link</a>
+        </div>
+        <div class="project-description">
+          <p><strong>Tech Stack:</strong> Python, TensorFlow/Keras, Tkinter, NumPy, Pandas, Matplotlib, Scikit-learn/Joblib</p>
+          <ul>
+            <li>Built a desktop simulator that models multiple flights between airports (AMD, BOM, DELHI) and predicts aircraft trajectories using LSTM-based time-series models.</li>
+            <li>Implemented real-time conflict detection and automatic altitude-change strategies, including smooth restoration to original cruise and descent profiles for safe landings.</li>
+            <li>Designed an interactive GUI to add flights, set airport weather conditions, visualize paths on a map, and display live log messages for reroutes, cancellations, and landing events.</li>
+          </ul>
+        </div>
+
+        <div class="project-tags">
+          <span class="tag-pill">Python</span>
+          <span class="tag-pill">TensorFlow/Keras</span>
+          <span class="tag-pill">LSTM</span>
+          <span class="tag-pill">Tkinter</span>
+          <span class="tag-pill">NumPy</span>
+          <span class="tag-pill">Pandas</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 2: HelpHive -->
+    <article class="project-card">
+       <div class="project-image">
+  <img src="images/helphive.jpeg" alt="helphive">
+</div>
+      <div class="project-content">
+        <h3 class="project-title">HelpHive – Service Booking Website</h3>
+        <div class="project-meta">
+          Apr 2025 – June 2025 ·
+          <a href="https://github.com/PadmajaNaik14/Helphive" target="_blank">Link</a>
+        </div>
+        <div class="project-description">
+          <p><strong>Tech Stack:</strong> HTML, CSS, MySQL, Flask</p>
+          <ul>
+            <li>Built a responsive website to connect users with daily service providers. Enabled booking through a user-friendly interface with real-time service availability.</li>
+            <li>Focused on self-service convenience and user control during transactions.</li>
+          </ul>
+        </div>
+
+        <div class="project-tags">
+          <span class="tag-pill">HTML</span>
+          <span class="tag-pill">CSS</span>
+          <span class="tag-pill">Flask</span>
+          <span class="tag-pill">MySQL</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 3: Health Monitoring System -->
+    <article class="project-card">
+       <div class="project-image">
+  <img src="images/System Layout.jpg" alt="iot">
+</div>
+      <div class="project-content">
+        <h3 class="project-title">Health Monitoring System for Paralysis Patients</h3>
+        <div class="project-meta">
+          Oct 2023 – Dec 2023 ·
+          <a href="https://drive.google.com/drive/folders/10Fc8ZRFMf_MSBI1UmwyCiIgCNr0q6jmh" target="_blank">Link</a>
+        </div>
+        <div class="project-description">
+          <p><strong>Hardware Components:</strong> Arduino, Temperature Sensor, Gyrometer, Heart Beat Sensor</p>
+          <ul>
+            <li>Created a sensor-based system to monitor vitals and detect patient gestures using a gyroscope. Displayed real-time data for caregivers and improved communication with minimal physical movement.</li>
+            <li>Aimed to assist paralysis patients in expressing basic needs through programmed gestures. Awarded a consolation prize for innovation.</li>
+          </ul>
+        </div>
+
+        <div class="project-tags">
+          <span class="tag-pill">Arduino</span>
+          <span class="tag-pill">Embedded Systems</span>
+          <span class="tag-pill">Healthcare</span>
+          <span class="tag-pill">IoT</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+</body>
+</html>
+

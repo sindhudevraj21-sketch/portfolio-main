@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfolio - Bethany Jones</title>
+
+  <!-- Google Fonts (similar to the design) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Basic Reset -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-main: #f3e8dd;
+      --bg-page: #f7efe7;
+      --card-bg: #ffffff;
+      --text-main: #222222;
+      --text-muted: #777777;
+      --accent: #111111;
+      --nav-hover: #000000;
+      --border-soft: #e2d3c5;
+      --shadow-soft: 0 8px 20px rgba(0,0,0,0.06);
+      --radius-card: 12px;
+      --transition-fast: 0.25s ease;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    /* Wrapper */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 24px 40px;
+    }
+
+    /* Top brand + nav */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0 18px;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      padding-bottom: 6px;
+      position: relative;
+      transition: color var(--transition-fast);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 0;
+      background-color: var(--accent);
+      transition: width var(--transition-fast);
+    }
+
+    nav a.active {
+      color: var(--nav-hover);
+    }
+
+    nav a.active::after {
+      width: 100%;
+    }
+
+    nav a:hover {
+      color: var(--nav-hover);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero section */
+    .hero {
+      margin-top: 12px;
+      background-color: var(--bg-main);
+      border-radius: 4px;
+      border: 1px solid var(--border-soft);
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      overflow: hidden;
+    }
+
+    .hero-text {
+      padding: 40px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      font-weight: 700;
+    }
+
+    .hero-subtitle {
+      max-width: 400px;
+      font-size: 15px;
+    }
+
+    .hero-handle {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .hero-socials {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 12px;
+      font-size: 20px;
+    }
+
+    .hero-socials a {
+      text-decoration: none;
+      color: var(--accent);
+      transition: transform var(--transition-fast), opacity var(--transition-fast);
+    }
+
+    .hero-socials a:hover {
+      transform: translateY(-2px);
+      opacity: 0.8;
+    }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Explore section */
+    .explore-section {
+      margin-top: 40px;
+    }
+
+    .explore-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      margin-bottom: 24px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px 22px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border-radius: var(--radius-card);
+      padding: 22px 24px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid #f0e2d4;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 115px;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .card-subtext {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .card-link {
+      font-size: 13px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .card-link span {
+      font-size: 16px;
+      line-height: 0;
+    }
+
+    .card-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Simple sections for nav targets (dummy content) */
+    section[id] {
+      scroll-margin-top: 90px;
+    }
+
+    .hidden-section {
+      margin-top: 40px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text {
+        padding: 28px 22px;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      nav ul {
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+    <!-- Header / Nav -->
+    <header>
+      <div class="logo">Portfolio</div>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="education.html" class="nav-link">Education</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="activities.html" class="nav-link">Activities</a></li>
+          <li><a href="certifications.html" class="nav-link">Certifications</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- HOME / Hero -->
+    <main id="home">
+      <section class="hero">
+        <div class="hero-text">
+          <h1 class="hero-title">Bethany Jones</h1>
+          <p class="hero-subtitle">
+            I'm a dedicated culture critic and blogger located in San Francisco, California.
+          </p>
+          <p class="hero-handle">@reallygreatsite</p>
+
+          <div class="hero-socials">
+            <!-- simple icon approximations; you can replace with SVG or FontAwesome -->
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="Twitter">🐦</a>
+            <a href="#" aria-label="LinkedIn">🔗</a>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <!-- Replace 'hero-image.jpg' with your own image path -->
+          <img src="hero-image.jpg" alt="Bethany Jones holding flowers and an ice cream" />
+        </div>
+      </section>
+
+      <!-- Explore cards -->
+      <section class="explore-section">
+        <h2 class="explore-title">Explore</h2>
+        <div class="cards-grid">
+          <article class="card">
+            <div>
+              <h3 class="card-title">Education</h3>
+              <p class="card-subtext">Academic journey and achievements</p>
+            </div>
+            <a href="#education" class="card-link">
+              Learn more <span>→</span>
+            </a>
+          </article>
+
+          <article class="card">
+            <div>
+              <h3 class="card-title">Projects</h3>
+              <p class="card-subtext">Featured work and case studies</p>
+            </div>
+            <a href="#projects" class="card-link">
+              Learn more <span>→</span>
+            </a>
+          </article>
+
+          <article class="card">
+            <div>
+              <h3 class="card-title">Activities</h3>
+              <p class="card-subtext">Extracurricular involvement</p>
+            </div>
+            <a href="#activities" class="card-link">
+              Learn more <span>→</span>
+            </a>
+          </article>
+
+          <article class="card">
+            <div>
+              <h3 class="card-title">Certifications</h3>
+              <p class="card-subtext">Professional credentials</p>
+            </div>
+            <a href="#certifications" class="card-link">
+              Learn more <span>→</span>
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Dummy content sections for scrolling -->
+      <section id="education" class="hidden-section">
+        <h3>Education</h3>
+        <p>Describe degrees, schools, GPA, awards, and coursework here.</p>
+      </section>
+
+      <section id="projects" class="hidden-section">
+        <h3>Projects</h3>
+        <p>Showcase main projects, links, and case studies here.</p>
+      </section>
+
+      <section id="activities" class="hidden-section">
+        <h3>Activities</h3>
+        <p>List clubs, volunteering, events, and leadership roles here.</p>
+      </section>
+
+      <section id="certifications" class="hidden-section">
+        <h3>Certifications</h3>
+        <p>Mention certificates, online courses, and badges here.</p>
+      </section>
+    </main>
+  </div>
+
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- JS + jQuery behaviour -->
+  <script>
+    $(function () {
+      // Smooth scroll for nav and "Learn more" links
+      $('a[href^="#"]').on('click', function (e) {
+        const targetId = $(this).attr('href');
+        const $target = $(targetId);
+
+        if ($target.length) {
+          e.preventDefault();
+          $('html, body').animate({
+            scrollTop: $target.offset().top - 70
+          }, 500);
+        }
+      });
+
+      // Set active state on nav when clicked
+      $('.nav-link').on('click', function () {
+        $('.nav-link').removeClass('active');
+        $(this).addClass('active');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfolio - Padmaja G Naik</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&family=Dancing+Script:wght@500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Font Awesome Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  >
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-main: #f3e8dd;
+      --bg-page: #f7efe7;
+      --card-bg: #ffffff;
+      --text-main: #222222;
+      --text-muted: #777777;
+      --accent: #111111;
+      --nav-hover: #000000;
+      --border-soft: #e2d3c5;
+      --shadow-soft: 0 8px 20px rgba(0,0,0,0.06);
+      --radius-card: 12px;
+      --transition-fast: 0.25s ease;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 24px 40px;
+    }
+
+    /* Navigation */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0 18px;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      padding-bottom: 6px;
+      position: relative;
+    }
+
+    nav a.active {
+      color: var(--nav-hover);
+    }
+
+    nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 100%;
+      background-color: var(--accent);
+    }
+
+    /* Hero Section */
+    .hero {
+      margin-top: 12px;
+      background-color: var(--bg-main);
+      border-radius: 4px;
+      border: 1px solid var(--border-soft);
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      overflow: hidden;
+      align-items: center;
+    }
+
+    .hero-text {
+      padding: 40px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .hero-greeting {
+      font-family: 'Dancing Script', cursive;
+      font-size: 28px;
+      font-weight: 500;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 700;
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .hero-emphasis {
+      margin-top: 6px;
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    /* Social Icons */
+    .hero-socials {
+      display: flex;
+      gap: 18px;
+      margin-top: 18px;
+      font-size: 22px;
+    }
+
+    .hero-socials a {
+      color: #000;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .hero-socials a:hover {
+      transform: translateY(-3px);
+      opacity: 0.8;
+    }
+
+    /* Hero Image */
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    /* Explore Section */
+    .explore-section {
+      margin-top: 40px;
+    }
+
+    .explore-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      margin-bottom: 24px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 22px 24px;
+      border: 1px solid #f0e2d4;
+      box-shadow: var(--shadow-soft);
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+    }
+
+    .card-link {
+      margin-top: 16px;
+      display: inline-block;
+      text-decoration: none;
+      color: black;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+    <!-- Header -->
+    <header>
+      <div class="logo">Portfolio</div>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="biodata.html">Biodata</a></li>
+          <li><a href="education.html">Education</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="activities.html">Activities</a></li>
+          <li><a href="certifications.html">Certifications</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-text">
+        <p class="hero-greeting">Hi There, I am</p>
+        <h1 class="hero-name">Padmaja G Naik</h1>
+        <p class="hero-sub">
+          An Engineering Student aspiring to
+          <span class="hero-emphasis">Grow &amp; Evolve.</span>
+        </p>
+
+  <!-- Resume Button ABOVE the icons -->
+  <a href="https://drive.google.com/file/d/1FhP1ZefsIo-cpOyE1dLOzTNhcAqjoFok/view?usp=drivesdk" target="_blank" class="resume-btn">View Resume</a>
+
+  <!-- Social Icons -->
+  <div class="hero-socials">
+    <a href="https://github.com/PadmajaNaik14" target="_blank" rel="noopener">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/padmaja-g-naik-4b84732bb?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener">
+      <i class="fab fa-linkedin"></i>
+    </a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img src="images/profile.jpeg" alt="Profile Photo">
+      </div>
+    </section>
+
+    <!-- Explore Section -->
+    <section class="explore-section">
+      <h2 class="explore-title">Explore</h2>
+
+      <div class="cards-grid">
+        <article class="card">
+          <div class="card-title">Education</div>
+          <p>Academic journey and achievements</p>
+          <a href="education.html" class="card-link">Learn more →</a>
+        </article>
+
+        <article class="card">
+          <div class="card-title">Projects</div>
+          <p>Featured work and case studies</p>
+          <a href="projects.html" class="card-link">Learn more →</a>
+        </article>
+
+        <article class="card">
+          <div class="card-title">Activities</div>
+          <p>Extracurricular involvement</p>
+          <a href="activities.html" class="card-link">Learn more →</a>
+        </article>
+
+        <article class="card">
+          <div class="card-title">Certifications</div>
+          <p>Professional credentials</p>
+          <a href="certifications.html" class="card-link">Learn more →</a>
+        </article>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>
+

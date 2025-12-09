@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfolio - Biodata</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-page: #f7efe7;
+      --card-bg: #ffffff;
+      --text-main: #222222;
+      --text-muted: #777777;
+      --accent: #111111;
+      --nav-hover: #000000;
+      --border-soft: #e2d3c5;
+      --shadow-soft: 0 8px 20px rgba(0,0,0,0.06);
+      --radius-card: 18px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+    }
+
+    /* Header (matches other pages) */
+    header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 12px 24px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      padding-bottom: 6px;
+      position: relative;
+    }
+
+    nav a.active {
+      color: var(--nav-hover);
+    }
+
+    nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 100%;
+      background-color: var(--accent);
+    }
+
+    nav a:hover {
+      color: var(--nav-hover);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+      content: "";
+      height: 2px;
+      background-color: var(--accent);
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+
+    /* Page Container */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      padding: 0 24px;
+    }
+
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      margin-bottom: 24px;
+      margin-top: 10px;
+    }
+
+    /* Biodata Card */
+    .biodata-card {
+      background-color: var(--card-bg);
+      border-radius: 18px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid #f0e2d4;
+      padding: 26px 32px;
+    }
+
+    .biodata-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      row-gap: 18px;
+      column-gap: 20px;
+      font-size: 15px;
+    }
+
+    .label {
+      font-weight: 600;
+      color: #444;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .value {
+      color: #333;
+    }
+
+    @media (max-width: 800px) {
+      .biodata-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">Portfolio</div>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="biodata.html" class="active">Biodata</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="activities.html">Activities</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Page Content -->
+  <div class="page">
+    <h2 class="page-title">Biodata</h2>
+
+    <div class="biodata-card">
+
+      <div class="biodata-grid">
+
+        <div class="label">Name</div>
+        <div class="value">Padmaja G Naik</div>
+
+        <div class="label">Date of Birth</div>
+        <div class="value">14-08-2005</div>
+
+        <div class="label">Gender</div>
+        <div class="value">Female</div>
+
+        <div class="label">Address</div>
+        <div class="value">Chikkalasandra, Bangalore</div>
+
+        <div class="label">Email</div>
+        <div class="value">padmajagnaik@gmail.com</div>
+
+        <div class="label">Phone</div>
+        <div class="value">7676130221</div>
+
+        <div class="label">Languages Known</div>
+        <div class="value">English, Hindi, Kannada</div>
+
+        <div class="label">Skills</div>
+        <div class="value">Python, Web Development, Machine Learning, Data Analysis</div>
+
+        <div class="label">Hobbies</div>
+        <div class="value">Reading, Drawing, Music</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

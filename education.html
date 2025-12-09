@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfolio - Education</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-main: #f3e8dd;
+      --bg-page: #f7efe7;
+      --card-bg: #ffffff;
+      --text-main: #222222;
+      --text-muted: #777777;
+      --accent: #111111;
+      --nav-hover: #000000;
+      --border-soft: #e2d3c5;
+      --shadow-soft: 0 8px 20px rgba(0,0,0,0.06);
+      --radius-card: 12px;
+      --transition-fast: 0.25s ease;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 24px 40px;
+      background-color: #ffffff;
+      box-shadow: var(--shadow-soft);
+      margin-top: 20px;
+      border-radius: 8px;
+    }
+
+    /* Header / nav – same style as home, but sitting above white card */
+    header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 12px 24px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      padding-bottom: 6px;
+      position: relative;
+      transition: color var(--transition-fast);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 0;
+      background-color: var(--accent);
+      transition: width var(--transition-fast);
+    }
+
+    nav a.active {
+      color: var(--nav-hover);
+    }
+
+    nav a.active::after {
+      width: 100%;
+    }
+
+    nav a:hover {
+      color: var(--nav-hover);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* EDUCATION heading with line (like your screenshot) */
+    .edu-heading {
+      margin-top: 8px;
+      margin-bottom: 18px;
+      position: relative;
+      text-align: center;
+    }
+
+    .edu-heading::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      border-top: 1px solid #000;
+      z-index: 0;
+    }
+
+    .edu-heading span {
+      position: relative;
+      z-index: 1;
+      background-color: #ffffff;
+      padding: 0 18px;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      letter-spacing: 0.12em;
+    }
+
+    /* Table-style education layout */
+    .edu-list {
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    .edu-item {
+      display: grid;
+      grid-template-columns: 2.5fr 1fr 0.8fr;
+      align-items: flex-start;
+      padding: 14px 2px;
+    }
+
+    .edu-item:not(:last-child) {
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .edu-left-title {
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .edu-left-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    .edu-year {
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .edu-score {
+      text-align: right;
+      font-size: 14px;
+    }
+
+    @media (max-width: 800px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        gap: 18px;
+      }
+
+      .page {
+        margin-top: 10px;
+        padding: 16px 16px 32px;
+      }
+
+      .edu-item {
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: auto auto;
+        row-gap: 4px;
+      }
+
+      .edu-score {
+        grid-column: 2 / 3;
+        text-align: right;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Shared header -->
+  <header>
+    <div class="logo">Portfolio</div>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="biodata.html" class="nav-link">Biodata</a></li>
+        <li><a href="education.html" class="nav-link active">Education</a></li>
+        <li><a href="projects.html" class="nav-link">Projects</a></li>
+        <li><a href="activities.html" class="nav-link">Activities</a></li>
+        <li><a href="certifications.html" class="nav-link">Certifications</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- White card with education content -->
+  <div class="page">
+    <div class="edu-heading">
+      <span>EDUCATION</span>
+    </div>
+
+    <div class="edu-list">
+
+      <div class="edu-item">
+        <div>
+          <div class="edu-left-title">Bangalore Institute of Technology</div>
+          <div class="edu-left-sub">Bachelor of Engineering in Computer Science</div>
+        </div>
+        <div class="edu-year">2023–Present</div>
+        <div class="edu-score">9.46</div>
+      </div>
+
+      <div class="edu-item">
+        <div>
+          <div class="edu-left-title">RNS PU College Channasandra Bangalore</div>
+          <div class="edu-left-sub">Senior Secondary – Karnataka State Board (Science)</div>
+        </div>
+        <div class="edu-year">2021–2023</div>
+        <div class="edu-score">96%</div>
+      </div>
+
+      <div class="edu-item">
+        <div>
+          <div class="edu-left-title">Kendriya Vidyalaya Malleshwaram Bangalore</div>
+          <div class="edu-left-sub">Secondary School – CBSE Board</div>
+        </div>
+        <div class="edu-year">2021</div>
+        <div class="edu-score">96.34%</div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
+

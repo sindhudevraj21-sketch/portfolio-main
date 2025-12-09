@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfolio - Certifications</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-page: #f7efe7;
+      --card-bg: #ffffff;
+      --text-main: #222222;
+      --text-muted: #777777;
+      --accent: #111111;
+      --nav-hover: #000000;
+      --border-soft: #e2d3c5;
+      --shadow-soft: 0 8px 20px rgba(0,0,0,0.06);
+      --radius-card: 18px;
+      --transition-fast: 0.25s ease;
+      --tag-bg: #f3e5d6;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    /* Header – same as other pages */
+    header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 12px 24px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      padding-bottom: 6px;
+      position: relative;
+      transition: color var(--transition-fast);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 0;
+      background-color: var(--accent);
+      transition: width var(--transition-fast);
+    }
+
+    nav a.active {
+      color: var(--nav-hover);
+    }
+
+    nav a.active::after {
+      width: 100%;
+    }
+
+    nav a:hover {
+      color: var(--nav-hover);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Page container */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      padding: 0 24px 40px;
+    }
+
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      margin: 12px 0 18px;
+    }
+
+    /* Certifications grid */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .cert-card {
+      background-color: var(--card-bg);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid #f0e2d4;
+      padding: 18px 20px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Image per certification */
+    .cert-image {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 6px;
+  background-color: #f3e8dd;    /* soft background behind the cert */
+  text-align: center;
+  padding: 6px 0;               /* little breathing space */
+}
+
+.cert-image img {
+  max-width: 95%;               /* don’t touch card edges */
+  max-height: 160px;            /* controls how big the cert appears */
+  height: auto;
+  width: auto;
+  object-fit: contain;          /* show whole image, no crop */
+  display: inline-block;
+}
+
+
+    .cert-header {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .icon-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #e3cec0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .cert-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .cert-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .cert-meta span.icon {
+      font-size: 15px;
+    }
+
+    .dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background-color: var(--text-muted);
+      display: inline-block;
+    }
+
+    .cert-description {
+      font-size: 14px;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+
+    .cert-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .tag-pill {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background-color: var(--tag-bg);
+      color: #5f4632;
+    }
+
+    .cert-footer {
+      margin-top: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .verify-link {
+      font-size: 13px;
+      text-decoration: none;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .verify-link span {
+      font-size: 14px;
+    }
+
+    .verify-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      .cert-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 800px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        gap: 18px;
+      }
+
+      .page {
+        padding: 0 16px 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Shared header -->
+  <header>
+    <div class="logo">Portfolio</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="biodata.html">Biodata</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="activities.html">Activities</a></li>
+        <li><a href="certifications.html" class="active">Certifications</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Certifications content -->
+  <div class="page">
+    <h2 class="page-title">Certifications</h2>
+
+    <div class="cert-grid">
+
+      <!-- Google / Coursera – Foundations of Cybersecurity -->
+      <article class="cert-card">
+        <div class="cert-image">
+          <img src="images/coursera.png" alt="Google Foundations of Cybersecurity certificate">
+        </div>
+
+        <div class="cert-header">
+          <div class="icon-circle">🎓</div>
+          <div>
+            <h3 class="cert-title">Foundations of Cybersecurity</h3>
+            <div class="cert-meta">
+              <span class="icon">🏢</span> Google / Coursera
+              <span class="dot"></span>
+              <span class="icon">📅</span> May 2024
+            </div>
+          </div>
+        </div>
+
+        <p class="cert-description">
+          Completed the first course in the Google Cybersecurity Professional Certificate, covering core
+          security concepts, common threats, network and system security basics, and the role of security
+          analysts in protecting organizations.
+        </p>
+
+        <div class="cert-tags">
+          <span class="tag-pill">Cybersecurity</span>
+          <span class="tag-pill">Security Fundamentals</span>
+          <span class="tag-pill">Risk Management</span>
+          <span class="tag-pill">Network Security</span>
+        </div>
+
+        <div class="cert-footer">
+          <span>ID: Coursera – Google Cybersecurity</span>
+          <a href="#" class="verify-link" target="_blank" rel="noopener">
+            Verify <span>↗</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- JPMorgan Chase & Co – Software Engineering Job Simulation -->
+      <article class="cert-card">
+        <div class="cert-image">
+          <img src="images/jpm.png" alt="JPMorgan Chase & Co Forage job simulation certificate">
+        </div>
+
+        <div class="cert-header">
+          <div class="icon-circle">💻</div>
+          <div>
+            <h3 class="cert-title">Software Engineering Job Simulation</h3>
+            <div class="cert-meta">
+              <span class="icon">🏢</span> JPMorgan Chase & Co · Forage
+              <span class="dot"></span>
+              <span class="icon">📅</span> October 2025
+            </div>
+          </div>
+        </div>
+
+        <p class="cert-description">
+          Completed a virtual job simulation focused on software engineering tasks such as project
+          setup, API integration, debugging, and working with backend services, mirroring workflows
+          used by engineers at JPMorgan Chase.
+        </p>
+
+        <div class="cert-tags">
+          <span class="tag-pill">Software Engineering</span>
+          <span class="tag-pill">APIs</span>
+          <span class="tag-pill">Backend</span>
+          <span class="tag-pill">Industry Simulation</span>
+        </div>
+
+        <div class="cert-footer">
+          <span>ID: Forage – JPMC SE Simulation</span>
+          <a href="#" class="verify-link" target="_blank" rel="noopener">
+            Verify <span>↗</span>
+          </a>
+        </div>
+      </article>
+
+      
+
+      <!-- Oracle Cloud Infrastructure 2025 – AI Foundations Associate -->
+      <article class="cert-card">
+        <div class="cert-image">
+          <img src="images/ociai.png" alt="Oracle Cloud Infrastructure AI Foundations certificate">
+        </div>
+
+        <div class="cert-header">
+          <div class="icon-circle">☁️</div>
+          <div>
+            <h3 class="cert-title">Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate</h3>
+            <div class="cert-meta">
+              <span class="icon">🏢</span> Oracle University
+              <span class="dot"></span>
+              <span class="icon">📅</span> October 23, 2025
+            </div>
+          </div>
+        </div>
+
+        <p class="cert-description">
+          Validates foundational knowledge of Oracle Cloud Infrastructure services and AI concepts,
+          including working with OCI resources, data services, and AI/ML capabilities for building
+          intelligent cloud applications.
+        </p>
+
+        <div class="cert-tags">
+          <span class="tag-pill">Oracle Cloud</span>
+          <span class="tag-pill">Cloud Infrastructure</span>
+          <span class="tag-pill">AI Foundations</span>
+        </div>
+
+        <div class="cert-footer">
+          <span>ID: OCI 2025 AI Foundations</span>
+          <a href="#" class="verify-link" target="_blank" rel="noopener">
+            Verify <span>↗</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Oracle Data Platform 2025 – Foundations Associate -->
+      <article class="cert-card">
+        <div class="cert-image">
+          <img src="images/ocidata.png" alt="Oracle Data Platform Foundations certificate">
+        </div>
+
+        <div class="cert-header">
+          <div class="icon-circle">📊</div>
+          <div>
+            <h3 class="cert-title">Oracle Data Platform 2025 Certified Foundations Associate</h3>
+            <div class="cert-meta">
+              <span class="icon">🏢</span> Oracle University
+              <span class="dot"></span>
+              <span class="icon">📅</span> October 28, 2025
+            </div>
+          </div>
+        </div>
+
+        <p class="cert-description">
+          Demonstrates understanding of Oracle’s data platform services, including data storage,
+          processing, and analytics options used to design modern data solutions on Oracle Cloud.
+        </p>
+
+        <div class="cert-tags">
+          <span class="tag-pill">Data Platform</span>
+          <span class="tag-pill">Data Engineering</span>
+          <span class="tag-pill">Databases</span>
+          <span class="tag-pill">Analytics</span>
+        </div>
+
+        <div class="cert-footer">
+          <span>ID: Oracle Data Platform 2025</span>
+          <a href="#" class="verify-link" target="_blank" rel="noopener">
+            Verify <span>↗</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- TechXibit Project Exhibition – BIT -->
+      <article class="cert-card">
+        <div class="cert-image">
+          <img src="images/techx.png" alt="TechXibit certificate">
+        </div>
+
+        <div class="cert-header">
+          <div class="icon-circle">🏅</div>
+          <div>
+            <h3 class="cert-title">TechXibit Project Exhibition – Certificate of Participation</h3>
+            <div class="cert-meta">
+              <span class="icon">🏢</span> Bangalore Institute of Technology (ISE Dept.)
+              <span class="dot"></span>
+              <span class="icon">📅</span> April 2025
+            </div>
+          </div>
+        </div>
+
+        <p class="cert-description">
+          Participated in the TechXibit project exhibition organized by the Department of Information
+          Science and Engineering, presenting an engineering project and interacting with faculty,
+          peers, and visitors for feedback.
+        </p>
+
+        <div class="cert-tags">
+          <span class="tag-pill">Project Exhibition</span>
+          <span class="tag-pill">Presentation Skills</span>
+          <span class="tag-pill">Teamwork</span>
+        </div>
+
+        <div class="cert-footer">
+          <span>ID: TechXibit 2025</span>
+          <a href="#" class="verify-link" target="_blank" rel="noopener">
+            Verify <span>↗</span>
+          </a>
+        </div>
+      </article>
+      <!-- Unstop / BIT – Xcelerate 24hr Hackathon -->
+      <article class="cert-card">
+        <div class="cert-image">
+          <img src="images/hackathon.png" alt="Unstop Xcelerate hackathon certificate">
+        </div>
+
+        <div class="cert-header">
+          <div class="icon-circle">⚙️</div>
+          <div>
+            <h3 class="cert-title">Xcelerate 24-Hour Hackathon – Certificate of Participation</h3>
+            <div class="cert-meta">
+              <span class="icon">🏢</span> Bangalore Institute of Technology / NIKSHATRA E-Summit
+              <span class="dot"></span>
+              <span class="icon">📅</span> October 2025
+            </div>
+          </div>
+        </div>
+
+        <p class="cert-description">
+          Participated as part of Team <strong>Web Warriors</strong> in the Xcelerate 24-hour hackathon
+          during NIKSHATRA – E-Summit 2025, building and pitching a web-based solution under time
+          constraints in a competitive environment.
+        </p>
+
+        <div class="cert-tags">
+          <span class="tag-pill">Hackathon</span>
+          <span class="tag-pill">Web Development</span>
+          <span class="tag-pill">Collaboration</span>
+          <span class="tag-pill">Problem Solving</span>
+        </div>
+
+        <div class="cert-footer">
+          <span>ID: Xcelerate 2025 – Web Warriors</span>
+          <a href="#" class="verify-link" target="_blank" rel="noopener">
+            Verify <span>↗</span>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+</body>
+</html>
+
